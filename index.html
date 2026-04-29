@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>She Is Salon – Your One Stop Salon</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400&display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"/>
+<style>
+:root{
+  --blush:#f7d6d6;
+  --rose:#d4607a;
+  --deep-rose:#a8334d;
+  --mauve:#c09aa0;
+  --cream:#fff8f5;
+  --champagne:#f5e6dc;
+  --warm-white:#fdf9f7;
+  --charcoal:#2a1a1e;
+  --soft-dark:#3d2530;
+  --gold:#c9a96e;
+  --light-gold:#e8d5b7;
+  --text-muted:#7a5a62;
+  --text-body:#4a2e38;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Poppins',sans-serif;background:var(--warm-white);color:var(--text-body);overflow-x:hidden}
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:var(--champagne)}
+::-webkit-scrollbar-thumb{background:var(--rose);border-radius:3px}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:18px 6%;background:rgba(253,249,247,0.88);backdrop-filter:blur(18px);border-bottom:1px solid rgba(212,96,122,0.12);transition:all .3s ease}
+nav.scrolled{padding:12px 6%;box-shadow:0 4px 30px rgba(168,51,77,0.1)}
+.nav-logo{font-size:1.5rem;font-weight:800;letter-spacing:-.5px;color:var(--deep-rose);text-decoration:none;display:flex;align-items:center;gap:8px}
+.nav-logo span{color:var(--gold)}
+.nav-links{display:flex;align-items:center;gap:32px;list-style:none}
+.nav-links a{text-decoration:none;font-size:.88rem;font-weight:500;color:var(--text-body);letter-spacing:.3px;transition:color .2s;position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:-3px;left:0;width:0;height:2px;background:var(--rose);transition:width .3s}
+.nav-links a:hover{color:var(--rose)}
+.nav-links a:hover::after{width:100%}
+.book-btn{background:var(--rose);color:#fff;padding:10px 24px;border-radius:50px;font-size:.88rem;font-weight:600;letter-spacing:.3px;border:none;cursor:pointer;transition:all .3s;box-shadow:0 4px 15px rgba(212,96,122,0.35)}
+.book-btn:hover{background:var(--deep-rose);transform:translateY(-2px);box-shadow:0 6px 20px rgba(212,96,122,0.45)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
+.hamburger span{display:block;width:24px;height:2px;background:var(--rose);border-radius:2px;transition:all .3s}
+
+/* HERO */
+#hero{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;padding:120px 6% 80px}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 70% 50%,rgba(247,214,214,0.55) 0%,transparent 60%),radial-gradient(ellipse 50% 80% at 10% 80%,rgba(201,169,110,0.15) 0%,transparent 50%),linear-gradient(135deg,#fff8f5 0%,#f5e6dc 40%,#fdf0f3 70%,#fff8f5 100%)}
+.petal{position:absolute;border-radius:50% 0 50% 0;opacity:.12;animation:floatPetal 8s ease-in-out infinite}
+.petal:nth-child(1){width:180px;height:180px;background:var(--rose);top:10%;left:5%;animation-delay:0s}
+.petal:nth-child(2){width:120px;height:120px;background:var(--gold);top:60%;left:2%;animation-delay:2s;border-radius:0 50% 0 50%}
+.petal:nth-child(3){width:200px;height:200px;background:var(--mauve);top:5%;right:8%;animation-delay:1s}
+.petal:nth-child(4){width:90px;height:90px;background:var(--deep-rose);top:75%;right:10%;animation-delay:3s}
+@keyframes floatPetal{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-20px) rotate(10deg)}}
+.hero-content{position:relative;z-index:2;max-width:600px}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgba(212,96,122,0.1);color:var(--rose);padding:6px 18px;border-radius:50px;font-size:.78rem;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:24px;animation:fadeUp .8s ease forwards;opacity:0}
+.hero-title{font-size:clamp(3rem,6vw,5.5rem);font-weight:900;line-height:1.0;letter-spacing:-2px;margin-bottom:16px;animation:fadeUp .8s .15s ease forwards;opacity:0}
+.hero-title .line1{display:block;color:var(--charcoal)}
+.hero-title .line2{display:block;background:linear-gradient(135deg,var(--rose),var(--deep-rose),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-style:italic}
+.hero-slogan{font-size:clamp(1rem,2vw,1.3rem);font-weight:300;letter-spacing:3px;text-transform:uppercase;color:var(--mauve);margin-bottom:12px;animation:fadeUp .8s .25s ease forwards;opacity:0}
+.hero-sub{font-size:1rem;color:var(--text-muted);font-weight:400;line-height:1.7;margin-bottom:40px;animation:fadeUp .8s .35s ease forwards;opacity:0}
+.hero-ctas{display:flex;gap:16px;flex-wrap:wrap;animation:fadeUp .8s .45s ease forwards;opacity:0}
+.btn-primary{background:linear-gradient(135deg,var(--rose),var(--deep-rose));color:#fff;padding:14px 32px;border-radius:50px;font-size:.95rem;font-weight:600;border:none;cursor:pointer;box-shadow:0 8px 25px rgba(212,96,122,0.4);transition:all .3s;text-decoration:none;display:inline-flex;align-items:center;gap:8px}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 12px 30px rgba(212,96,122,0.5)}
+.btn-secondary{background:transparent;color:var(--rose);padding:14px 32px;border-radius:50px;font-size:.95rem;font-weight:600;border:2px solid var(--rose);cursor:pointer;transition:all .3s;text-decoration:none;display:inline-flex;align-items:center;gap:8px}
+.btn-secondary:hover{background:var(--rose);color:#fff;transform:translateY(-3px)}
+
+/* Hero image grid */
+.hero-image-grid{position:absolute;right:5%;top:50%;transform:translateY(-50%);display:grid;grid-template-columns:160px 120px;grid-template-rows:200px 160px 120px;gap:12px;z-index:2;animation:fadeRight 1s .3s ease forwards;opacity:0}
+.hero-img-card{border-radius:20px;overflow:hidden;box-shadow:0 10px 30px rgba(168,51,77,0.2);position:relative;background:#e8d5d5}
+.hero-img-card img{width:100%;height:100%;object-fit:cover;display:block}
+.hero-img-card:nth-child(1){grid-column:1;grid-row:1/3;border-radius:60px 20px 20px 20px}
+.hero-img-card:nth-child(2){grid-column:2;grid-row:1;border-radius:20px 60px 20px 20px}
+.hero-img-card:nth-child(3){grid-column:2;grid-row:2;border-radius:20px}
+.hero-img-card:nth-child(4){grid-column:1/3;grid-row:3;border-radius:20px 20px 60px 20px}
+.float-badge{position:absolute;bottom:-10px;left:-15px;background:rgba(255,255,255,0.95);backdrop-filter:blur(10px);border-radius:16px;padding:10px 16px;box-shadow:0 8px 20px rgba(0,0,0,0.12);display:flex;align-items:center;gap:8px;z-index:3;animation:floatBadge 3s ease-in-out infinite}
+@keyframes floatBadge{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+.float-badge .icon{width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,var(--rose),var(--deep-rose));display:flex;align-items:center;justify-content:center;color:#fff;font-size:.8rem}
+.float-badge .text{font-size:.72rem;font-weight:600;color:var(--charcoal)}
+.float-badge .sub{font-size:.65rem;color:var(--text-muted);font-weight:400}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeRight{from{opacity:0;transform:translate(40px,-50%)}to{opacity:1;transform:translate(0,-50%)}}
+
+/* MARQUEE */
+.marquee-strip{background:linear-gradient(135deg,var(--rose),var(--deep-rose));color:#fff;padding:14px 0;overflow:hidden}
+.marquee-inner{display:flex;gap:48px;width:max-content;animation:marquee 20s linear infinite}
+.marquee-item{display:flex;align-items:center;gap:12px;font-size:.85rem;font-weight:600;letter-spacing:1px;text-transform:uppercase;white-space:nowrap}
+.marquee-item i{color:var(--light-gold);font-size:.75rem}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* SECTIONS */
+section{padding:90px 6%}
+.section-eyebrow{display:inline-flex;align-items:center;gap:8px;color:var(--rose);font-size:.75rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:12px}
+.section-eyebrow::before,.section-eyebrow::after{content:'';display:block;width:20px;height:1.5px;background:var(--rose)}
+.section-title{font-size:clamp(2rem,4vw,3rem);font-weight:800;line-height:1.15;letter-spacing:-1px;color:var(--charcoal);margin-bottom:16px}
+.section-title span{color:var(--rose)}
+.section-sub{font-size:1rem;color:var(--text-muted);line-height:1.7;max-width:550px}
+
+/* ABOUT */
+#about{background:var(--warm-white);display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.about-images{position:relative;height:520px}
+.about-img-main{position:absolute;left:0;top:0;width:72%;height:85%;border-radius:60px 20px 60px 20px;overflow:hidden;box-shadow:0 20px 60px rgba(168,51,77,0.25)}
+.about-img-main img{width:100%;height:100%;object-fit:cover}
+.about-img-sm{position:absolute;right:0;bottom:0;width:45%;height:55%;border-radius:20px 60px 20px 60px;overflow:hidden;box-shadow:0 15px 40px rgba(168,51,77,0.2);border:6px solid var(--warm-white)}
+.about-img-sm img{width:100%;height:100%;object-fit:cover}
+.about-stat-badge{position:absolute;right:5%;top:35%;background:linear-gradient(135deg,var(--rose),var(--deep-rose));color:#fff;border-radius:20px;padding:16px 20px;text-align:center;box-shadow:0 10px 30px rgba(212,96,122,0.4);animation:floatBadge 4s ease-in-out infinite}
+.about-stat-badge .num{font-size:1.8rem;font-weight:800;display:block}
+.about-stat-badge .label{font-size:.72rem;font-weight:500;opacity:.9}
+.about-text .stats-row{display:flex;gap:32px;margin:32px 0}
+.stat{text-align:center}
+.stat .n{font-size:2rem;font-weight:800;color:var(--rose);display:block}
+.stat .l{font-size:.78rem;color:var(--text-muted);font-weight:500}
+
+/* SERVICES */
+#services{background:linear-gradient(160deg,#fdf0f3 0%,var(--champagne) 50%,#fdf0f3 100%)}
+.services-header{text-align:center;margin-bottom:60px}
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px}
+.service-card{background:#fff;border-radius:28px;overflow:hidden;box-shadow:0 4px 20px rgba(168,51,77,0.08);transition:all .4s ease;cursor:pointer;position:relative}
+.service-card:hover{transform:translateY(-8px);box-shadow:0 16px 50px rgba(168,51,77,0.2)}
+.service-card-img{height:220px;overflow:hidden;position:relative;background:#f0e0e5}
+.service-card-img img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease;display:block}
+.service-card:hover .service-card-img img{transform:scale(1.08)}
+.service-card-img .overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(42,26,30,0.5) 0%,transparent 60%)}
+.service-card-body{padding:24px}
+.service-icon{width:42px;height:42px;border-radius:14px;background:linear-gradient(135deg,rgba(212,96,122,0.15),rgba(168,51,77,0.1));display:flex;align-items:center;justify-content:center;color:var(--rose);font-size:1rem;margin-bottom:12px}
+.service-card-body h3{font-size:1.15rem;font-weight:700;color:var(--charcoal);margin-bottom:8px}
+.service-card-body p{font-size:.85rem;color:var(--text-muted);line-height:1.6}
+.service-tag{display:inline-block;margin-top:12px;background:rgba(212,96,122,0.1);color:var(--rose);padding:4px 14px;border-radius:50px;font-size:.72rem;font-weight:600;letter-spacing:.5px}
+
+/* WIGS */
+#wigs{background:var(--warm-white)}
+.wigs-grid{display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:auto auto;gap:20px;margin-top:48px}
+.wig-card{border-radius:24px;overflow:hidden;position:relative;cursor:pointer;box-shadow:0 6px 25px rgba(168,51,77,0.12);background:#f0e0e5}
+.wig-card img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s ease}
+.wig-card:hover img{transform:scale(1.06)}
+.wig-card:nth-child(1){grid-column:1/3;height:380px}
+.wig-card:nth-child(2){grid-column:3;height:380px}
+.wig-card:nth-child(3){height:260px}
+.wig-card:nth-child(4){height:260px}
+.wig-card:nth-child(5){height:260px}
+.wig-label{position:absolute;bottom:0;left:0;right:0;padding:24px;background:linear-gradient(to top,rgba(42,26,30,0.75) 0%,transparent 100%);color:#fff}
+.wig-label h4{font-size:1rem;font-weight:700;margin-bottom:4px}
+.wig-label p{font-size:.78rem;opacity:.85}
+
+/* NAILS */
+#nails{background:linear-gradient(160deg,#fdf0f3 0%,#fff8f5 50%,#fdf0f3 100%)}
+.nails-layout{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.nails-gallery{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:200px 200px;gap:16px}
+.nail-img{border-radius:20px;overflow:hidden;position:relative;background:#f0e0e5}
+.nail-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s}
+.nail-img:hover img{transform:scale(1.08)}
+.nail-img:nth-child(1){border-radius:50px 20px 20px 20px}
+.nail-img:nth-child(2){border-radius:20px 50px 20px 20px}
+.nail-img:nth-child(3){border-radius:20px 20px 20px 50px;grid-column:1/3;height:200px}
+.nails-text .service-list{list-style:none;margin:24px 0}
+.nails-text .service-list li{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid rgba(212,96,122,0.1);font-size:.9rem;font-weight:500;color:var(--text-body)}
+.nails-text .service-list li i{color:var(--rose);font-size:.8rem;width:16px}
+
+/* GALLERY */
+#gallery{background:var(--charcoal)}
+.gallery-header{text-align:center;margin-bottom:48px}
+.gallery-header .section-title{color:#fff}
+.gallery-header .section-eyebrow{color:var(--light-gold)}
+.gallery-header .section-eyebrow::before,.gallery-header .section-eyebrow::after{background:var(--light-gold)}
+.gallery-header p{color:rgba(255,255,255,.6);font-size:.95rem;margin-top:8px}
+.gallery-masonry{columns:4;gap:16px;column-fill:balance}
+.gallery-item{break-inside:avoid;margin-bottom:16px;border-radius:18px;overflow:hidden;cursor:pointer;position:relative;background:#3a2a2e}
+.gallery-item img{width:100%;display:block;transition:transform .5s}
+.gallery-item:hover img{transform:scale(1.05)}
+.gallery-item .g-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(212,96,122,0.7),rgba(168,51,77,0.5));opacity:0;transition:opacity .3s;display:flex;align-items:center;justify-content:center}
+.gallery-item:hover .g-overlay{opacity:1}
+.gallery-item .g-overlay i{color:#fff;font-size:1.5rem}
+
+/* INSTAGRAM */
+#social{background:linear-gradient(160deg,#fdf0f3,var(--champagne));text-align:center;padding:80px 6%}
+.ig-header{margin-bottom:48px}
+.ig-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;max-width:900px;margin:0 auto 40px}
+.ig-tile{aspect-ratio:1;border-radius:18px;overflow:hidden;position:relative;cursor:pointer;background:#f0e0e5}
+.ig-tile img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s}
+.ig-tile:hover img{transform:scale(1.08)}
+.ig-tile .ig-overlay{position:absolute;inset:0;background:rgba(212,96,122,0.7);opacity:0;transition:opacity .3s;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.2rem}
+.ig-tile:hover .ig-overlay{opacity:1}
+.ig-follow-btn{display:inline-flex;align-items:center;gap:12px;background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);color:#fff;padding:14px 36px;border-radius:50px;font-size:1rem;font-weight:700;letter-spacing:.5px;text-decoration:none;box-shadow:0 8px 25px rgba(220,39,67,0.35);transition:all .3s}
+.ig-follow-btn:hover{transform:translateY(-3px);box-shadow:0 12px 35px rgba(220,39,67,0.45)}
+
+/* MODAL */
+.modal-overlay{position:fixed;inset:0;z-index:2000;background:rgba(42,26,30,0.7);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s;padding:20px}
+.modal-overlay.active{opacity:1;pointer-events:all}
+.modal{background:#fff;border-radius:32px;max-width:480px;width:100%;padding:40px;position:relative;transform:scale(.92) translateY(20px);transition:all .35s cubic-bezier(0.34,1.56,0.64,1);box-shadow:0 30px 80px rgba(0,0,0,0.2)}
+.modal-overlay.active .modal{transform:scale(1) translateY(0)}
+.modal-close{position:absolute;top:20px;right:20px;width:36px;height:36px;border-radius:50%;background:rgba(212,96,122,0.1);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--rose);font-size:.9rem;transition:all .2s}
+.modal-close:hover{background:var(--rose);color:#fff}
+.modal-icon{width:64px;height:64px;border-radius:50%;background:linear-gradient(135deg,rgba(212,96,122,0.15),rgba(168,51,77,0.1));display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin:0 auto 20px;color:var(--rose)}
+.modal h2{font-size:1.5rem;font-weight:800;color:var(--charcoal);text-align:center;margin-bottom:6px}
+.modal .modal-desc{font-size:.88rem;color:var(--text-muted);text-align:center;margin-bottom:28px;line-height:1.6}
+.form-group{margin-bottom:18px}
+.form-group label{display:block;font-size:.8rem;font-weight:600;color:var(--charcoal);margin-bottom:6px;letter-spacing:.3px}
+.form-group input,.form-group select,.form-group textarea{width:100%;padding:12px 16px;border-radius:14px;border:2px solid rgba(212,96,122,0.2);font-family:'Poppins',sans-serif;font-size:.88rem;color:var(--text-body);background:var(--warm-white);outline:none;transition:border .2s}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--rose)}
+.form-group textarea{height:90px;resize:none}
+.wa-btn{width:100%;padding:14px;border-radius:50px;background:linear-gradient(135deg,#25d366,#128c7e);color:#fff;font-family:'Poppins',sans-serif;font-size:.95rem;font-weight:700;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px;box-shadow:0 6px 20px rgba(37,211,102,0.35);transition:all .3s;margin-top:8px}
+.wa-btn:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(37,211,102,0.45)}
+.modal-note{text-align:center;font-size:.75rem;color:var(--text-muted);margin-top:14px;display:flex;align-items:center;justify-content:center;gap:6px}
+
+/* CONTACT */
+#contact{background:var(--charcoal);color:#fff;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+#contact .section-title{color:#fff}
+#contact .section-eyebrow{color:var(--light-gold)}
+#contact .section-eyebrow::before,#contact .section-eyebrow::after{background:var(--light-gold)}
+.contact-text p{color:rgba(255,255,255,.65);line-height:1.7;margin-bottom:32px;font-size:.95rem}
+.contact-items{display:flex;flex-direction:column;gap:20px}
+.contact-item{display:flex;align-items:center;gap:16px;padding:16px 20px;border-radius:18px;background:rgba(255,255,255,.05);transition:background .2s}
+.contact-item:hover{background:rgba(212,96,122,.15)}
+.contact-item .ci-icon{width:44px;height:44px;border-radius:14px;background:linear-gradient(135deg,var(--rose),var(--deep-rose));display:flex;align-items:center;justify-content:center;font-size:.95rem;flex-shrink:0;color:#fff}
+.contact-item .ci-text span{display:block;font-size:.73rem;color:rgba(255,255,255,.5);font-weight:500;margin-bottom:2px}
+.contact-item .ci-text a,.contact-item .ci-text p{font-size:.9rem;font-weight:600;color:#fff;text-decoration:none;transition:color .2s}
+.contact-item .ci-text a:hover{color:var(--rose)}
+.contact-visual{background:linear-gradient(135deg,rgba(212,96,122,0.15),rgba(168,51,77,0.1));border:1px solid rgba(212,96,122,0.2);border-radius:32px;padding:40px;text-align:center}
+.contact-visual .big-logo{font-size:2.5rem;font-weight:900;color:#fff;letter-spacing:-1px;margin-bottom:8px}
+.contact-visual .big-logo span{color:var(--rose)}
+.contact-visual .tagline{color:rgba(255,255,255,.5);font-size:.8rem;letter-spacing:2px;text-transform:uppercase}
+.hours-list{list-style:none;margin-top:32px;text-align:left}
+.hours-list li{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.07);font-size:.85rem}
+.hours-list li span:first-child{color:rgba(255,255,255,.6)}
+.hours-list li span:last-child{color:#fff;font-weight:600}
+
+/* FOOTER */
+footer{background:#1a0f13;color:rgba(255,255,255,.5);padding:40px 6%;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px}
+.footer-logo{font-size:1.1rem;font-weight:800;color:#fff;letter-spacing:-.3px}
+.footer-logo span{color:var(--rose)}
+footer p{font-size:.78rem}
+.footer-links{display:flex;gap:20px}
+.footer-links a{font-size:.78rem;color:rgba(255,255,255,.4);text-decoration:none;transition:color .2s}
+.footer-links a:hover{color:var(--rose)}
+
+/* FLOAT BTN */
+#floatBookBtn{position:fixed;bottom:28px;right:28px;z-index:900;background:linear-gradient(135deg,var(--rose),var(--deep-rose));color:#fff;border:none;border-radius:50px;padding:14px 22px;font-family:'Poppins',sans-serif;font-size:.88rem;font-weight:700;cursor:pointer;box-shadow:0 8px 25px rgba(212,96,122,0.5);display:flex;align-items:center;gap:8px;animation:pulse 2.5s ease-in-out infinite}
+@keyframes pulse{0%,100%{box-shadow:0 8px 25px rgba(212,96,122,0.5)}50%{box-shadow:0 8px 35px rgba(212,96,122,0.8),0 0 0 8px rgba(212,96,122,0.1)}}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  #about,#contact{grid-template-columns:1fr}
+  .hero-image-grid{display:none}
+  .wigs-grid{grid-template-columns:1fr 1fr}
+  .wigs-grid .wig-card:nth-child(1){grid-column:1/3;height:280px}
+  .wigs-grid .wig-card:nth-child(2){grid-column:1/3;height:260px}
+  .gallery-masonry{columns:2}
+  .ig-grid{grid-template-columns:repeat(2,1fr)}
+  .nails-layout{grid-template-columns:1fr}
+  #contact{grid-template-columns:1fr}
+}
+@media(max-width:600px){
+  .nav-links{display:none;flex-direction:column;position:fixed;top:70px;left:0;right:0;background:rgba(253,249,247,0.97);backdrop-filter:blur(20px);padding:24px;gap:16px;border-bottom:1px solid rgba(212,96,122,0.15)}
+  .nav-links.open{display:flex}
+  .hamburger{display:flex}
+  .book-btn.nav-book{display:none}
+  .wigs-grid{grid-template-columns:1fr}
+  .wigs-grid .wig-card{grid-column:1!important;height:260px!important}
+  .gallery-masonry{columns:2}
+  section{padding:60px 5%}
+  .nails-gallery{grid-template-columns:1fr 1fr}
+  .nails-gallery .nail-img:nth-child(3){grid-column:1/3}
+}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(40px);transition:all .7s cubic-bezier(0.16,1,0.3,1)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-delay-1{transition-delay:.1s}
+.reveal-delay-2{transition-delay:.2s}
+.reveal-delay-3{transition-delay:.3s}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#" class="nav-logo">She Is <span>Salon</span></a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#wigs">Wigs</a></li>
+    <li><a href="#nails">Nails</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#social">Instagram</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <button class="book-btn nav-book" onclick="openModal()">Book Now</button>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg">
+    <div class="petal"></div><div class="petal"></div>
+    <div class="petal"></div><div class="petal"></div>
+  </div>
+  <div class="hero-content">
+    <div class="hero-eyebrow"><i class="fas fa-star"></i>Welcome to She Is Salon<i class="fas fa-star"></i></div>
+    <h1 class="hero-title">
+      <span class="line1">Beauty That</span>
+      <span class="line2">Defines You</span>
+    </h1>
+    <p class="hero-slogan">Your One Stop Salon</p>
+    <p class="hero-sub">From gorgeous wigs to flawless nails and everything in between — we bring out the queen in every woman.</p>
+    <div class="hero-ctas">
+      <button class="btn-primary" onclick="openModal()"><i class="fas fa-calendar-check"></i>Book Appointment</button>
+      <a href="#services" class="btn-secondary"><i class="fas fa-sparkles"></i>Our Services</a>
+    </div>
+  </div>
+
+  <!--
+    HERO IMAGE GRID — 4 cards
+    FIX: Card 2 (top-right) was broken. Now uses a reliable picsum photo.
+  -->
+  <div class="hero-image-grid">
+    <!-- Card 1 – large left -->
+    <div class="hero-img-card">
+      <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=400&q=80&auto=format" alt="Beauty salon" loading="lazy"/>
+      <div class="float-badge">
+        <div class="icon"><i class="fas fa-heart"></i></div>
+        <div><div class="text">Premium Quality</div><div class="sub">100% Satisfaction</div></div>
+      </div>
+    </div>
+    <!-- Card 2 – top right  ✅ FIXED: replaced broken Unsplash URL -->
+    <div class="hero-img-card">
+      <img src="https://images.unsplash.com/photo-1631083215283-b5e1f37d6db8?w=300&q=80&auto=format" alt="Hair styling" loading="lazy"/>
+    </div>
+    <!-- Card 3 – middle right -->
+    <div class="hero-img-card">
+      <img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?w=300&q=80&auto=format" alt="Nails" loading="lazy"/>
+    </div>
+    <!-- Card 4 – bottom spanning both columns -->
+    <div class="hero-img-card">
+      <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=500&q=80&auto=format" alt="Salon interior" loading="lazy"/>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-strip">
+  <div class="marquee-inner">
+    <span class="marquee-item"><i class="fas fa-gem"></i>Wig Installation</span>
+    <span class="marquee-item"><i class="fas fa-gem"></i>Nail Art</span>
+    <span class="marquee-item"><i class="fas fa-gem"></i>Hair Braiding</span>
+    <span class="marquee-item"><i class="fas fa-gem"></i>Makeup</span>
+    <span class="marquee-item"><i class="fas fa-gem"></i>Lashes</span>
+    <span class="marquee-item"><i class="fas fa-gem"></i>Hair Treatment</span>
+    <span class="marquee-item"><i class="fas fa-gem"></i>Eyebrow Threading</span>
+    <span class="marquee-item"><i class="fas fa-gem"></i>Facials</span>
+    <span class="marquee-item"><i class="fas fa-gem"></i>Wig Installation</span>
+    <span class="marquee-item"><i class="fas fa-gem"></i>Nail Art</span>
+    <span class="marquee-item"><i class="fas fa-gem"></i>Hair Braiding</span>
+    <span class="marquee-item"><i class="fas fa-gem"></i>Makeup</span>
+    <span class="marquee-item"><i class="fas fa-gem"></i>Lashes</span>
+    <span class="marquee-item"><i class="fas fa-gem"></i>Hair Treatment</span>
+    <span class="marquee-item"><i class="fas fa-gem"></i>Eyebrow Threading</span>
+    <span class="marquee-item"><i class="fas fa-gem"></i>Facials</span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-images reveal">
+    <div class="about-img-main">
+      <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=600&q=80&auto=format" alt="She Is Salon" loading="lazy"/>
+    </div>
+    <div class="about-img-sm">
+      <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=400&q=80&auto=format" alt="Salon service" loading="lazy"/>
+    </div>
+    <div class="about-stat-badge"><span class="num">500+</span><span class="label">Happy Clients</span></div>
+  </div>
+  <div class="about-text reveal reveal-delay-2">
+    <p class="section-eyebrow">About Us</p>
+    <h2 class="section-title">Ghana's Premier <span>Beauty</span> Destination</h2>
+    <p class="section-sub">She Is Salon is more than a salon — it's an experience. We combine skill, passion, and premium products to give every client a look that's uniquely hers. Whether you want a wig installed, nails done, or a full glam look, we've got you covered.</p>
+    <div class="stats-row">
+      <div class="stat"><span class="n">5+</span><span class="l">Years Experience</span></div>
+      <div class="stat"><span class="n">30+</span><span class="l">Services</span></div>
+      <div class="stat"><span class="n">500+</span><span class="l">Happy Clients</span></div>
+    </div>
+    <button class="btn-primary" onclick="openModal()"><i class="fas fa-calendar-check"></i>Book Now</button>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="services-header reveal">
+    <p class="section-eyebrow">What We Offer</p>
+    <h2 class="section-title">Our <span>Services</span></h2>
+    <p class="section-sub" style="margin:0 auto;text-align:center">Everything you need to look and feel your absolute best, all under one roof.</p>
+  </div>
+  <div class="services-grid">
+    <!-- Card 1 – Wigs -->
+    <div class="service-card reveal">
+      <div class="service-card-img">
+        <img src="https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=500&q=80&auto=format" alt="Wigs" loading="lazy"/>
+        <div class="overlay"></div>
+      </div>
+      <div class="service-card-body">
+        <div class="service-icon"><i class="fas fa-crown"></i></div>
+        <h3>Wig Installation & Styling</h3>
+        <p>From lace frontals to full wigs — installed, styled, and cut to perfection.</p>
+        <span class="service-tag">Most Popular</span>
+      </div>
+    </div>
+    <!-- Card 2 – Nails -->
+    <div class="service-card reveal reveal-delay-1">
+      <div class="service-card-img">
+        <img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?w=500&q=80&auto=format" alt="Nails" loading="lazy"/>
+        <div class="overlay"></div>
+      </div>
+      <div class="service-card-body">
+        <div class="service-icon"><i class="fas fa-hand-sparkles"></i></div>
+        <h3>Nail Art & Manicure</h3>
+        <p>Gel, acrylic, press-on, nail art — your nails tell a story we help you write.</p>
+        <span class="service-tag">Trending</span>
+      </div>
+    </div>
+    <!-- Card 3 – Makeup  ✅ FIXED: replaced broken photo-1487412947147 URL -->
+    <div class="service-card reveal reveal-delay-2">
+      <div class="service-card-img">
+        <img src="https://images.unsplash.com/photo-1526413232644-8a40f03cc03b?w=500&q=80&auto=format" alt="Makeup" loading="lazy"/>
+        <div class="overlay"></div>
+      </div>
+      <div class="service-card-body">
+        <div class="service-icon"><i class="fas fa-magic"></i></div>
+        <h3>Makeup & Glam</h3>
+        <p>Everyday glam to bridal makeup — we make every occasion unforgettable.</p>
+        <span class="service-tag">Premium</span>
+      </div>
+    </div>
+    <!-- Card 4 – Braiding -->
+    <div class="service-card reveal reveal-delay-1">
+      <div class="service-card-img">
+        <img src="https://images.unsplash.com/photo-1620331311520-246422fd82f9?w=500&q=80&auto=format" alt="Braiding" loading="lazy"/>
+        <div class="overlay"></div>
+      </div>
+      <div class="service-card-body">
+        <div class="service-icon"><i class="fas fa-spa"></i></div>
+        <h3>Hair Braiding</h3>
+        <p>Box braids, knotless, Ghana weaving, cornrows — your favourite protective styles.</p>
+      </div>
+    </div>
+    <!-- Card 5 – Lashes -->
+    <div class="service-card reveal reveal-delay-2">
+      <div class="service-card-img">
+        <img src="https://images.unsplash.com/photo-1590439471364-192aa70c0b53?w=500&q=80&auto=format" alt="Lashes" loading="lazy"/>
+        <div class="overlay"></div>
+      </div>
+      <div class="service-card-body">
+        <div class="service-icon"><i class="fas fa-eye"></i></div>
+        <h3>Lashes & Brows</h3>
+        <p>Extensions, lifts, and threading — frame your face beautifully.</p>
+      </div>
+    </div>
+    <!-- Card 6 – Hair Treatment -->
+    <div class="service-card reveal reveal-delay-3">
+      <div class="service-card-img">
+        <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=500&q=80&auto=format" alt="Treatments" loading="lazy"/>
+        <div class="overlay"></div>
+      </div>
+      <div class="service-card-body">
+        <div class="service-icon"><i class="fas fa-leaf"></i></div>
+        <h3>Hair Treatments</h3>
+        <p>Deep conditioning, keratin, steam treatments — restore your hair's health.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WIGS -->
+<section id="wigs">
+  <div class="reveal" style="text-align:center;margin-bottom:12px">
+    <p class="section-eyebrow">Wig Collection</p>
+    <h2 class="section-title">Crown Yourself <span>Queen</span></h2>
+    <p class="section-sub" style="margin:0 auto;text-align:center">We install, style, and customise wigs to give you a natural, flawless finish every time.</p>
+  </div>
+  <div class="wigs-grid">
+    <div class="wig-card reveal">
+      <img src="https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=700&q=80&auto=format" alt="Lace front wig" loading="lazy"/>
+      <div class="wig-label"><h4>Lace Front Wigs</h4><p>Natural hairline perfection</p></div>
+    </div>
+    <div class="wig-card reveal reveal-delay-1">
+      <img src="https://images.unsplash.com/photo-1519699047748-de8e457a634e?w=400&q=80&auto=format" alt="Curly wigs" loading="lazy"/>
+      <div class="wig-label"><h4>Curly & Wavy Units</h4><p>Bounce & volume all day</p></div>
+    </div>
+    <div class="wig-card reveal">
+      <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&q=80&auto=format" alt="Straight wigs" loading="lazy"/>
+      <div class="wig-label"><h4>Straight Sleek Units</h4><p>Smooth & sophisticated</p></div>
+    </div>
+    <div class="wig-card reveal reveal-delay-1">
+      <img src="https://images.unsplash.com/photo-1485968579580-b6d095142e6e?w=400&q=80&auto=format" alt="Coloured wigs" loading="lazy"/>
+      <div class="wig-label"><h4>Coloured Units</h4><p>Express yourself boldly</p></div>
+    </div>
+    <div class="wig-card reveal reveal-delay-2">
+      <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=400&q=80&auto=format" alt="Short wigs" loading="lazy"/>
+      <div class="wig-label"><h4>Short & Bob Units</h4><p>Chic & effortlessly stylish</p></div>
+    </div>
+  </div>
+  <div style="text-align:center;margin-top:40px" class="reveal">
+    <button class="btn-primary" onclick="openModal()"><i class="fas fa-calendar-check"></i>Book Wig Appointment</button>
+  </div>
+</section>
+
+<!-- NAILS -->
+<section id="nails">
+  <div class="nails-layout">
+    <div class="nails-text reveal">
+      <p class="section-eyebrow">Nail Studio</p>
+      <h2 class="section-title">Nails Done <span>Right</span></h2>
+      <p class="section-sub">Our nail technicians are artists. From classic French tips to elaborate 3D nail art — every set is a masterpiece crafted just for you.</p>
+      <ul class="service-list">
+        <li><i class="fas fa-check-circle"></i>Gel Manicure & Pedicure</li>
+        <li><i class="fas fa-check-circle"></i>Acrylic Full Set & Refill</li>
+        <li><i class="fas fa-check-circle"></i>Press-On Nail Installation</li>
+        <li><i class="fas fa-check-circle"></i>Nail Art & 3D Designs</li>
+        <li><i class="fas fa-check-circle"></i>Nail Repair & Strengthening</li>
+        <li><i class="fas fa-check-circle"></i>French Tips & Ombre</li>
+      </ul>
+      <button class="btn-primary" onclick="openModal()"><i class="fas fa-hand-sparkles"></i>Book Nail Appointment</button>
+    </div>
+    <!--
+      NAILS GALLERY — 3 images
+      FIX: 3rd image (grid-column:1/3) was broken. Now uses reliable URL.
+    -->
+    <div class="nails-gallery reveal reveal-delay-2">
+      <div class="nail-img">
+        <img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?w=400&q=80&auto=format" alt="Nail art" loading="lazy"/>
+      </div>
+      <div class="nail-img">
+        <img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?w=400&q=80&auto=format&sat=-30" alt="Gel nails" loading="lazy"/>
+      </div>
+      <!-- ✅ FIXED: replaced broken photo-1632345031435 URL -->
+      <div class="nail-img">
+        <img src="https://images.unsplash.com/photo-1599578282003-aeace45ee95c?w=700&q=80&auto=format" alt="Nail designs" loading="lazy"/>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery">
+  <div class="gallery-header reveal">
+    <p class="section-eyebrow">Our Work</p>
+    <h2 class="section-title">Transformations That <span style="color:var(--rose)">Speak</span></h2>
+    <p>Every client that leaves our chair is a walking masterpiece.</p>
+  </div>
+  <div class="gallery-masonry">
+    <div class="gallery-item reveal"><img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=400&q=80&auto=format" alt="Gallery 1" loading="lazy"/><div class="g-overlay"><i class="fas fa-expand"></i></div></div>
+    <div class="gallery-item reveal reveal-delay-1"><img src="https://images.unsplash.com/photo-1519699047748-de8e457a634e?w=400&q=80&auto=format" alt="Gallery 2" loading="lazy"/><div class="g-overlay"><i class="fas fa-expand"></i></div></div>
+    <div class="gallery-item reveal reveal-delay-2"><img src="https://images.unsplash.com/photo-1526413232644-8a40f03cc03b?w=400&q=80&auto=format" alt="Gallery 3" loading="lazy"/><div class="g-overlay"><i class="fas fa-expand"></i></div></div>
+    <div class="gallery-item reveal"><img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?w=400&q=80&auto=format" alt="Gallery 4" loading="lazy"/><div class="g-overlay"><i class="fas fa-expand"></i></div></div>
+    <div class="gallery-item reveal reveal-delay-1"><img src="https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=400&q=80&auto=format" alt="Gallery 5" loading="lazy"/><div class="g-overlay"><i class="fas fa-expand"></i></div></div>
+    <div class="gallery-item reveal reveal-delay-2"><img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&q=80&auto=format" alt="Gallery 6" loading="lazy"/><div class="g-overlay"><i class="fas fa-expand"></i></div></div>
+    <div class="gallery-item reveal"><img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=400&q=80&auto=format" alt="Gallery 7" loading="lazy"/><div class="g-overlay"><i class="fas fa-expand"></i></div></div>
+    <div class="gallery-item reveal reveal-delay-1"><img src="https://images.unsplash.com/photo-1590439471364-192aa70c0b53?w=400&q=80&auto=format" alt="Gallery 8" loading="lazy"/><div class="g-overlay"><i class="fas fa-expand"></i></div></div>
+  </div>
+</section>
+
+<!-- INSTAGRAM -->
+<section id="social">
+  <div class="ig-header reveal">
+    <p class="section-eyebrow">Follow Us</p>
+    <h2 class="section-title">We're On <span>Instagram</span></h2>
+    <p class="section-sub" style="margin:0 auto;text-align:center">See our latest work, behind-the-scenes moments, and style inspo on our page.</p>
+  </div>
+  <!--
+    INSTAGRAM GRID — 4 tiles
+    FIX: 4th tile was broken. Now uses reliable URL.
+  -->
+  <div class="ig-grid reveal">
+    <div class="ig-tile">
+      <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=300&q=80&auto=format" alt="Instagram 1" loading="lazy"/>
+      <div class="ig-overlay"><i class="fab fa-instagram"></i></div>
+    </div>
+    <div class="ig-tile">
+      <img src="https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=300&q=80&auto=format" alt="Instagram 2" loading="lazy"/>
+      <div class="ig-overlay"><i class="fab fa-instagram"></i></div>
+    </div>
+    <div class="ig-tile">
+      <img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?w=300&q=80&auto=format" alt="Instagram 3" loading="lazy"/>
+      <div class="ig-overlay"><i class="fab fa-instagram"></i></div>
+    </div>
+    <!-- ✅ FIXED: replaced broken photo-1487412947147 URL -->
+    <div class="ig-tile">
+      <img src="https://images.unsplash.com/photo-1526413232644-8a40f03cc03b?w=300&q=80&auto=format" alt="Instagram 4" loading="lazy"/>
+      <div class="ig-overlay"><i class="fab fa-instagram"></i></div>
+    </div>
+  </div>
+  <div class="reveal">
+    <a href="https://www.instagram.com/sheis__salon" target="_blank" rel="noopener" class="ig-follow-btn">
+      <i class="fab fa-instagram" style="font-size:1.2rem"></i>@sheis__salon — Follow Us on Instagram
+    </a>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-text reveal">
+    <p class="section-eyebrow">Get In Touch</p>
+    <h2 class="section-title">Ready to Look <span>Amazing?</span></h2>
+    <p>Reach out to us via email or Instagram, or simply tap Book Now to send us a message on WhatsApp.</p>
+    <div class="contact-items">
+      <div class="contact-item">
+        <div class="ci-icon"><i class="fas fa-envelope"></i></div>
+        <div class="ci-text">
+          <span>Email Us</span>
+          <a href="mailto:shellamensah00@gmail.com">shellamensah00@gmail.com</a>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="ci-icon"><i class="fab fa-instagram"></i></div>
+        <div class="ci-text">
+          <span>Instagram</span>
+          <a href="https://www.instagram.com/sheis__salon" target="_blank" rel="noopener">@sheis__salon</a>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="ci-icon"><i class="fab fa-whatsapp"></i></div>
+        <div class="ci-text">
+          <span>Book via WhatsApp</span>
+          <p style="cursor:pointer" onclick="openModal()">Tap to Book an Appointment</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="contact-visual reveal reveal-delay-2">
+    <div class="big-logo">She Is <span>Salon</span></div>
+    <div class="tagline">Your One Stop Salon</div>
+    <ul class="hours-list">
+      <li><span>Monday</span><span>9:00 AM – 7:00 PM</span></li>
+      <li><span>Tuesday</span><span>9:00 AM – 7:00 PM</span></li>
+      <li><span>Wednesday</span><span>9:00 AM – 7:00 PM</span></li>
+      <li><span>Thursday</span><span>9:00 AM – 7:00 PM</span></li>
+      <li><span>Friday</span><span>9:00 AM – 8:00 PM</span></li>
+      <li><span>Saturday</span><span>8:00 AM – 8:00 PM</span></li>
+      <li><span>Sunday</span><span>Closed ❤️</span></li>
+    </ul>
+    <div style="margin-top:28px">
+      <button class="btn-primary" style="width:100%;justify-content:center" onclick="openModal()">
+        <i class="fas fa-calendar-check"></i>Book an Appointment
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">She Is <span>Salon</span></div>
+  <p>© 2025 She Is Salon · Your One Stop Salon · Ghana</p>
+  <div class="footer-links">
+    <a href="#hero">Home</a>
+    <a href="#services">Services</a>
+    <a href="#gallery">Gallery</a>
+    <a href="mailto:shellamensah00@gmail.com">Email</a>
+    <a href="https://www.instagram.com/sheis__salon" target="_blank">Instagram</a>
+  </div>
+</footer>
+
+<!-- FLOATING BOOK BUTTON -->
+<button id="floatBookBtn" onclick="openModal()">
+  <i class="fas fa-calendar-check"></i>Book Now
+</button>
+
+<!-- BOOKING MODAL -->
+<div class="modal-overlay" id="bookingModal" onclick="handleOverlayClick(event)">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()"><i class="fas fa-times"></i></button>
+    <div class="modal-icon"><i class="fas fa-calendar-heart"></i></div>
+    <h2>Book an Appointment</h2>
+    <p class="modal-desc">Fill in your details below. We'll open WhatsApp with your booking message ready to send!</p>
+    <div class="form-group">
+      <label>Your Full Name</label>
+      <input type="text" id="clientName" placeholder="e.g. Ama Mensah"/>
+    </div>
+    <div class="form-group">
+      <label>Your WhatsApp Number</label>
+      <input type="tel" id="clientPhone" placeholder="e.g. 0241234567"/>
+    </div>
+    <div class="form-group">
+      <label>Service Interested In</label>
+      <select id="serviceSelect">
+        <option value="">Select a service...</option>
+        <option>Wig Installation &amp; Styling</option>
+        <option>Nail Art &amp; Manicure</option>
+        <option>Makeup &amp; Glam</option>
+        <option>Hair Braiding</option>
+        <option>Lashes &amp; Brows</option>
+        <option>Hair Treatment</option>
+        <option>Multiple Services</option>
+        <option>Other</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Preferred Date &amp; Time</label>
+      <input type="datetime-local" id="preferredDate"/>
+    </div>
+    <div class="form-group">
+      <label>Any Additional Notes (optional)</label>
+      <textarea id="clientNotes" placeholder="e.g. hair length, colour preference..."></textarea>
+    </div>
+    <button class="wa-btn" onclick="bookOnWhatsApp()">
+      <i class="fab fa-whatsapp" style="font-size:1.2rem"></i>Send Booking via WhatsApp
+    </button>
+    <p class="modal-note"><i class="fas fa-lock" style="color:var(--rose)"></i>Your info is only used to contact She Is Salon</p>
+  </div>
+</div>
+
+<script>
+/* ── NAV ── */
+const navbar   = document.getElementById('navbar');
+const hamburger= document.getElementById('hamburger');
+const navLinks = document.getElementById('navLinks');
+window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 50));
+hamburger.addEventListener('click', () => navLinks.classList.toggle('open'));
+navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+/* ── SCROLL REVEAL ── */
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: .12 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+/* ── MODAL ── */
+function openModal()  { document.getElementById('bookingModal').classList.add('active');    document.body.style.overflow = 'hidden'; }
+function closeModal() { document.getElementById('bookingModal').classList.remove('active'); document.body.style.overflow = '';       }
+function handleOverlayClick(e) { if (e.target === document.getElementById('bookingModal')) closeModal(); }
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+/* ── WHATSAPP BOOKING  ✅ FIXED ──
+   Root cause: the placeholder number '233XXXXXXXXX' is not a valid WhatsApp
+   number, so WhatsApp returns "page not found".
+
+   HOW IT WORKS NOW:
+   • The salon's real WhatsApp number is stored in SALON_WA below.
+   • Replace the value with the actual number in international format,
+     digits only — no '+', no spaces, no dashes.
+     Example Ghana number +233 54 546 6648  →  '233545466648'
+   • The booking message is pre-filled and WhatsApp opens a new chat
+     directly to that number so the client just taps Send.
+*/
+const SALON_WA = '233545466648'; // ← REPLACE with the real salon number
+
+function bookOnWhatsApp() {
+  const name    = document.getElementById('clientName').value.trim();
+  const phone   = document.getElementById('clientPhone').value.trim();
+  const service = document.getElementById('serviceSelect').value;
+  const date    = document.getElementById('preferredDate').value;
+  const notes   = document.getElementById('clientNotes').value.trim();
+
+  /* Validation */
+  if (!name)    { alert('Please enter your name.');         return; }
+  if (!phone)   { alert('Please enter your WhatsApp number.'); return; }
+  if (!service) { alert('Please select a service.');        return; }
+
+  const dateStr = date
+    ? new Date(date).toLocaleString('en-GH', { dateStyle: 'full', timeStyle: 'short' })
+    : 'Flexible — to be confirmed';
+
+  const msg =
+    `Hello She Is Salon! 💅✨\n\n` +
+    `I'd like to book an appointment:\n\n` +
+    `👤 *Name:* ${name}\n` +
+    `📱 *My WhatsApp:* ${phone}\n` +
+    `💇 *Service:* ${service}\n` +
+    `📅 *Date/Time:* ${dateStr}` +
+    (notes ? `\n📝 *Notes:* ${notes}` : '') +
+    `\n\nPlease confirm my booking. Thank you! 🌸`;
+
+  /* Build the WhatsApp deep-link and open it */
+  const waURL = 'https://wa.me/' + SALON_WA + '?text=' + encodeURIComponent(msg);
+  window.open(waURL, '_blank');
+}
+</script>
+</body>
+</html>
